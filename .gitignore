@@ -1,0 +1,8 @@
+node_modules
+.idea
+dist
+.env
+_templates
+*.swp
+.serverless
+.vscode

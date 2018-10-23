@@ -1,0 +1,60 @@
+{
+  "name": "groupeMeBot",
+  "description": "",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "clean": "rm -rf ./dist",
+    "lint:src": "tslint src/**/*.ts",
+    "lint:test": "tslint test/**/*.ts",
+    "lint": "npm run lint:src && npm run lint:test",
+    "start": "sls offline start --stage dev --port 3000",
+    "deploy:prod": "npm run build && serverless deploy -s prod",
+    "deploy:qa": "npm run build && serverless deploy -s qa",
+    "deploy:dev": "npm run build && serverless deploy -s dev",
+    "test:unit": "mocha -R spec --watch-extensions spec.ts,ts --require ts-node/register 'test/unit/**/*.spec.ts' --recursive",
+    "test": "npm run test:unit",
+    "test:watch": "npm run test:unit -- --watch",
+    "sls-nsfw": "npm run build && sls invoke local -f getStuff --stage dev --path ./test/data/nsfw.json",
+    "sls-off": "npm run build && sls invoke local -f getStuff --stage dev --path ./test/data/off.json",
+    "debug-getStuff": "node --inspect-brk ./node_modules/.bin/sls invoke local --stage dev -f getStuff --path ./test/data/off.json --verbose",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/singlecomm/groupeMeBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/singlecomm/groupeMeBot/issues"
+  },
+  "homepage": "https://github.com/singlecomm/groupeMeBot#readme",
+  "dependencies": {
+    "@sc/logger": "^2.0.0",
+    "aws-sdk": "^2.315.0",
+    "axios": "^0.18.0",
+    "dotenv": "^6.0.0",
+    "envalid": "^4.1.4",
+    "uuid": "^3.3.2",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.11",
+    "@types/chai": "^4.1.4",
+    "@types/dotenv": "^4.0.3",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.10.0",
+    "@types/uuid": "^3.4.3",
+    "aws-sdk-mock": "^4.2.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "serverless": "^1.32.0",
+    "serverless-dotenv-plugin": "^1.2.1",
+    "serverless-offline": "^3.14.2",
+    "standard-version": "^4.2.0",
+    "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.5.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1"
+  }
+}

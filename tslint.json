@@ -1,0 +1,33 @@
+{
+  "lintOptions" : {
+    "typeCheck": true
+  },
+  "extends": "tslint:recommended",
+  "rules": {
+    "interface-name": [
+      true
+    ],
+    "no-console": {
+      "options": [
+        "info",
+        "time",
+        "timeEnd",
+        "trace"
+      ]
+    },
+    "object-literal-shorthand": false,
+    "object-literal-sort-keys": false,
+    "no-var-requires": false,
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration"
+    ],
+    "variable-name": ["allow-snake-case"]
+  }
+}
